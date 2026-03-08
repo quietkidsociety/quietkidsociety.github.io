@@ -1,0 +1,143 @@
+:root {
+  --qksColorBackground: #000;
+  --qksColorForeground: #fff;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --qksColorBackground: #fff;
+    --qksColorForeground: #000;
+  }
+  #qksFavicon, #qksBackdrop, #qksBanner {
+    filter: invert(1);
+  }
+}
+@font-face {
+  font-family: "Quiet Kid Society Pixel";
+  src: url("assets/qks_font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  color: var(--qksColorForeground);
+  font-family: "Quiet Kid Society Pixel";
+  font-size: 12px;
+  line-height: 2;
+  margin: 0;
+}
+a {
+  color: var(--qksColorForeground);
+  text-decoration: none;
+  padding: 2px;
+}
+button, select {
+  color: var(--qksColorForeground);
+  background-color: var(--qksColorBackground);
+  font-family: "Quiet Kid Society Pixel";
+  font-size: 12px;
+  line-height: 2;
+  border: var(--qksColorForeground) 2px solid;
+  margin: 0;
+}
+select {
+  height: 24px;
+}
+a:hover, button:hover {
+  color: var(--qksColorBackground);
+  background-color: var(--qksColorForeground);
+}
+table {
+  font-size: 12px;
+  width: 100%;
+}
+big {
+  font-size: 24px;
+}
+.qksSplit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.qksSplit div {
+  flex: 1;
+}
+.qksProfilePictures {
+  border: 2px solid var(--qksColorForeground);
+}
+.qksProfileStreaksChip {
+  border: 2px solid var(--qksColorForeground);
+  padding: 12px;
+}
+@media screen and (max-width: 1000px) {
+  #qksTitle {
+    display: none;
+  }
+  .qksSplit {
+    flex-direction: column;
+    justify-content: end;
+  }
+}
+#qksBackdrop {
+  position: fixed;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: url(assets/qks_backdrop.png);
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: invert(50%);
+
+}
+#qksNav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 24px;
+  width: 100%;
+  padding: 12px;
+  line-height: 1;
+  background-color: var(--qksColorBackground);
+  border-bottom: var(--qksColorForeground) 2px solid;
+}
+#qksContent {
+  margin: 0 auto;
+  height: auto;
+  min-height: calc(100vh - 24px);
+  width: 80%;
+  max-width: 1000px;
+  z-index: 0;
+  padding: 12px;
+  background-color: var(--qksColorBackground);
+  border-left: var(--qksColorForeground) 2px solid;
+  border-right: var(--qksColorForeground) 2px solid;
+}
+#qksLeaderboard {
+  max-height: 576px; 
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#qksLeaderboardTable {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+#qksLeaderboardTable tr:first-child {
+  position: sticky;
+  top: 0;
+}
+#qksLeaderboardTable td {
+  background-color: var(--qksColorBackground);
+  padding: 12px;
+  border: 2px solid var(--qksColorForeground);
+}
+#qksLeaderboardTable td:nth-child(2) {
+  border-right: none;
+  padding-right: 0;
+  width: 12px
+}
+#qksLeaderboardTable tr:not(:first-child) td:nth-child(3) {
+  border-left: none;
+}

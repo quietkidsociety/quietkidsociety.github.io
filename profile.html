@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<head>
+  <title>Quiet Kid Society</title>
+  <link rel="stylesheet" href="style.css">
+  <link id="qksFavicon" rel="shortcut icon" href="assets/qks_favicon.ico" type="image/x-icon">
+  <link id="qksFavicon" rel="shortcut icon" href="assets/qks_favicon_light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+  <script src="lib.js"></script>
+  <script src="db.js"></script>
+  <script>
+    const qksProfileId = new URLSearchParams(window.location.search).get("id");
+  </script>
+</head>
+<body>
+  <div id="qksBackdrop"></div>
+  <div id="qksNav">
+    <div class="qksSplit" style="flex-direction: row; width: calc(100% - 24px)">
+      <div style="text-align: left;">
+        <big>&#xeeee;</big>
+        <span id="qksTitle"> &ZeroWidthSpace; Quiet Kid Society </span>
+      </div>
+      <div style="text-align: right;">
+        <button onclick="window.location.href = 'index.html';">Back</button>
+      </div>
+    </div>
+  </div>
+  <div id="qksContent">
+    <br> <br>
+    <div id="qksProfile">
+      <div id="qksProfileTitle">
+        <script>
+          const qksProfileTitle = document.getElementById("qksProfileTitle");
+          if (qksMembers[qksProfileId]) {
+            qksProfileTitle.innerHTML = `<center><img src="assets/pfp/${
+              qksProfileId
+            }.png" class="qksProfilePictures" height="144px"></img><br><big>${
+              qksMembers[qksProfileId].qksMemberName
+            }</big></center>`;
+          }
+        </script>
+      </div>
+      <div id="qksProfileRank">
+        <script>
+          const qksProfileRank = document.getElementById("qksProfileRank");
+          let qksLeaderboardRankMembers = [];
+          for (let [m, n] of Object.entries(qksMembers)) {
+            qksLeaderboardRankMembers.push([m, n]);
+            qksLeaderboardRankMembers[qksLeaderboardRankMembers.length - 1][1] = qksStreakDuration([...
+              qksStreaks.filter(i => i.qksStreakHolder === m).sort(
+                (a, b) => qksStreakDuration(b) - qksStreakDuration(a)), {
+                qksStreakHolder: m,
+                qksStreakStart: new Date(1),
+                qksStreakEnd: new Date(1)
+            }][0]);
+          }
+          qksLeaderboardRankMembers = qksLeaderboardRankMembers.sort(
+            (a, b) => b[1] - a[1]);
+          let qksProfileRankNumber = qksLeaderboardRankMembers.findIndex(i => i[0] === qksProfileId);
+          qksProfileRank.innerHTML = `<center>Rank <big>${
+            qksProfileRankNumber + 1
+          }</big></center>`;
+        </script>
+      </div>
+      <br>
+      <div id="qksProfileHighlight">
+        <div class="qksSplit">
+          <div>
+            <center> Current Streak <div id="qksProfileHighlightStreakCurrentTimer">
+                <big>/</big>
+              </div>
+              <div id="qksProfileHighlightStreakCurrentSpan"></div>
+            </center>
+            <br>
+            <script>
+              const qksProfileHighlightStreakCurrentTimer = document.getElementById(
+                "qksProfileHighlightStreakCurrentTimer");
+              const qksProfileHighlightStreakCurrentSpan = document.getElementById(
+                "qksProfileHighlightStreakCurrentSpan");
+              const qksProfileHighlightStreakCurrent = qksStreaks.filter(i => i.qksStreakHolder ===
+                qksProfileId && i.qksStreakEnd.getTime() === 0)[0] ?? null
+              if (qksProfileHighlightStreakCurrent) {
+                let qksProfileHighlightStreakCurrentStart = qksProfileHighlightStreakCurrent.qksStreakStart;
+                qksProfileHighlightStreakCurrentSpan.innerHTML = `${
+                  qksFormatTime(qksProfileHighlightStreakCurrent.qksStreakStart)
+                } ~`;
+                setInterval(() => {
+                  qksProfileHighlightStreakCurrentTimer.innerHTML = `<big>${qksFormatDuration(
+                    new Date() - qksProfileHighlightStreakCurrentStart 
+                  )}`.replace(".", "</big>.");
+                }, 1)
+              }
+            </script>
+          </div>
+          <div>
+            <center> Max Streak <div id="qksProfileHighlightStreakMaxTimer">
+                <big>/</big>
+              </div>
+              <div id="qksProfileHighlightStreakMaxSpan"></div>
+            </center>
+            <script>
+              const qksProfileHighlightStreakMaxTimer = document.getElementById(
+                "qksProfileHighlightStreakMaxTimer");
+              const qksProfileHighlightStreakMaxSpan = document.getElementById(
+                "qksProfileHighlightStreakMaxSpan");
+              const qksProfileHighlightStreakMax = [...qksStreaks.filter(i => i.qksStreakHolder ===
+                qksProfileId).sort(
+                (a, b) => qksStreakDuration(b) - qksStreakDuration(a)), ][0] ?? null
+              if (qksProfileHighlightStreakMax) {
+                if (qksProfileHighlightStreakMax.qksStreakEnd < qksProfileHighlightStreakMax.qksStreakStart) {
+                  qksProfileHighlightStreakMaxSpan.innerHTML = `${
+                    qksFormatTime(qksProfileHighlightStreakMax.qksStreakStart)
+                  } ~`;
+                } else {
+                  qksProfileHighlightStreakMaxSpan.innerHTML = `${
+                    qksFormatTime(qksProfileHighlightStreakMax.qksStreakStart)
+                  } ~ <br>${
+                    qksFormatTime(qksProfileHighlightStreakMax.qksStreakEnd)
+                  }`;
+                }
+                setInterval(() => {
+                  qksProfileHighlightStreakMaxTimer.innerHTML = `<big>${
+                    qksFormatDuration(qksStreakDuration(qksProfileHighlightStreakMax))
+                  }`.replace(".", "</big>.");
+                }, 1)
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+      <br>
+      <big>Links</big>
+      <div id="qksProfileLinks">
+        <script>
+          const qksProfileLinks = document.getElementById("qksProfileLinks");
+          let qksProfileLinksCode = "";
+          if (qksMembers[qksProfileId]) {
+            if (qksMembers[qksProfileId].qksMemberLinks.length === 0) {
+              qksProfileLinks.innerHTML = "<center>This member does not have any links.</center>";
+            } else {
+              for (let i = 0; i < qksMembers[qksProfileId].qksMemberLinks.length; i++) {
+                qksProfileLinksCode += `${
+                  qksMembers[qksProfileId].qksMemberLinks[i][0]
+                }: <a href="${
+                  qksMembers[qksProfileId].qksMemberLinks[i][2]
+                }">${
+                  qksMembers[qksProfileId].qksMemberLinks[i][1]
+                }</a>`;
+              }
+              qksProfileLinks.innerHTML = qksProfileLinksCode;
+            }
+          }
+        </script>
+      </div>
+      <br>
+      <big>About</big>
+      <div id="qksProfileAbout">
+        <script>
+          const qksProfileAbout = document.getElementById("qksProfileAbout");
+          if (qksMembers[qksProfileId]) {
+            if (qksMembers[qksProfileId].qksMemberAbout == "") {
+              qksProfileAbout.innerHTML = "<center>This member does not have an about section.</center>";
+            } else {
+              qksProfileAbout.innerHTML = qksMembers[qksProfileId].qksMemberAbout;
+            }
+          }
+        </script>
+      </div>
+      <br>
+      <big>Streaks</big>
+      <div id="qksProfileStreaks">
+        <label for="qksProfileStreaksSort">Sort</label>
+        <select name="qksProfileStreaksSort" id="qksProfileStreaksSort">
+          <option value="qksProfileStreaksSortNewest" default>Newest</option>
+          <option value="qksProfileStreaksSortOldest">Oldest</option>
+          <option value="qksProfileStreaksSortLongest">Lonegst</option>
+        </select>
+        <br>
+        <br>
+        <div id="qksProfileStreaksList"></div>
+        <script>
+          const qksProfileStreaksList = document.getElementById("qksProfileStreaksList");
+          const qksProfileStreaksSort = document.getElementById("qksProfileStreaksSort");
+          let qksProfileStreaksTimersArray = [];
+          let qksStreaksEnum = []
+          for (let i = 0; i < qksStreaks.length; i++) {
+            qksStreaksEnum.push([i, qksStreaks[i]])
+          }
+          let qksProfileStreaksArray = [];
+          let qksProfileStreaksIndex = 0;
+          for (let i = 0; i < qksStreaksEnum.length; i++) {
+            if (qksStreaksEnum[i][1].qksStreakHolder === qksProfileId) {
+              qksProfileStreaksIndex++;
+              qksProfileStreaksArray.push([qksProfileStreaksIndex, ...qksStreaksEnum[i]]);
+            }
+          }
+          let qksProfileStreaksCode = "";
+          function qksProfileStreaksInit() {
+            qksProfileStreaksCode = ""
+            qksProfileStreaksTimersArray = [];
+            qksProfileStreaksArray = qksProfileStreaksArray.sort({
+              "qksProfileStreaksSortNewest": (a, b) => b[2].qksStreakStart - a[2].qksStreakStart,
+              "qksProfileStreaksSortOldest": (a, b) => a[2].qksStreakStart - b[2].qksStreakStart,
+              "qksProfileStreaksSortLongest": (a, b) => qksStreakDuration(b[2]) - qksStreakDuration(a[2]),
+            } [qksProfileStreaksSort.value])
+            for (let i = 0; i < qksProfileStreaksArray.length; i++) {
+              qksProfileStreaksCode += `<div class="qksProfileStreaksChip">[${
+                qksProfileStreaksArray[i][0]
+              }] Streak #${
+                qksProfileStreaksArray[i][1]
+              }${
+                qksProfileStreaksArray[i][2].qksStreakName ? window.innerWidth > 1000 ? " - " : " - <br>" : ""
+              }${
+                qksProfileStreaksArray[i][2].qksStreakName ?? ""
+              }<br>`;
+              if (qksProfileStreaksArray[i][2].qksStreakEnd < qksProfileStreaksArray[i][2].qksStreakStart) {
+                qksProfileStreaksCode += `<div class="qksProfileStreaksTimer"><big></big></div>${
+                  qksFormatTime(qksProfileStreaksArray[i][2].qksStreakStart)
+                } ~`;
+                qksProfileStreaksTimersArray.push(qksProfileStreaksArray[i][2].qksStreakStart);
+              } else {
+                qksProfileStreaksCode += `<big>${
+                  qksFormatDuration(qksStreakDuration(qksProfileStreaksArray[i][2])).replace(".", "</big>.")
+                }<br>${
+                  qksFormatTime(qksProfileStreaksArray[i][2].qksStreakStart)
+                } ~ ${
+                  window.innerWidth > 1000 ? "" : "<br>"
+                }${
+                  qksFormatTime(qksProfileStreaksArray[i][2].qksStreakEnd)
+                }`;
+              }
+              qksProfileStreaksCode += "</div><br>";
+            }
+            if (!qksProfileStreaksCode) {
+              qksProfileStreaksCode += "<center>This member does not have any streaks.</center><br>"
+            }
+            qksProfileStreaksList.innerHTML = qksProfileStreaksCode;
+          }
+          if (qksMembers[qksProfileId]) {
+            qksProfileStreaksInit();
+            window.addEventListener("resize", () => {
+              qksProfileStreaksInit();
+            });
+            qksProfileStreaksSort.addEventListener("change", () => {
+              qksProfileStreaksInit();
+            });
+            const qksProfileStreaksTimers = document.getElementsByClassName("qksProfileStreaksTimer");
+            setInterval(() => {
+              if (qksProfileStreaksTimers) {
+                for (let i = 0; i < qksProfileStreaksTimers.length; i++) {
+                  qksProfileStreaksTimers[i].innerHTML = `<big>${
+                    qksFormatDuration(new Date() - qksProfileStreaksTimersArray[i])
+                  }`.replace(".", "</big>.");
+                }
+              }
+            }, 1);
+          }
+        </script>
+      </div>
+      <script>
+        const qksProfile = document.getElementById("qksProfile");
+        if (!qksMembers[qksProfileId]) {
+          qksProfile.innerHTML = "<center>This member does not exist.</center><br>"
+        }
+      </script>
+    </div>
+    <center> Quiet Kid Society, 2026 </center>
+  </div>
+</body>
