@@ -2,7 +2,7 @@ const qksMembers = {
   "itscentralize": {
     qksMemberName: "ItsCentralize",
     qksMemberLinks: [
-      ["Email", "itscentralize@gmail.com", "mailto:itscentralize@gmail.com"]
+      ["Email", "itscentralize@gmail.com", "mailto:itscentralize@gmail.com"],
       ["Instagram", "@itscentralize", "https://www.instagram.com/itscentralize/"]
     ],
     qksMemberAbout: ""
