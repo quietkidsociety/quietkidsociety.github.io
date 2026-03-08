@@ -24,27 +24,7 @@
         <big>A trial of tranquility.</big>
         <br>
         Quiet Kid Society has officialized and is now refining the art of in-school stoicism.
-        <br> <br>
-        <div id="qksSeasonA1">
-          <center> Upcoming Season A1 <div id="qksSeasonA1Timer">
-            <big>/</big>
-            </div>
-            <div id="qksSeasonA1TimerDate"></div>
-          </center>
-          <script>
-            const qksSleasonA1Timer = document.getElementById("qksSeasonA1Timer");
-            const qksSeasonA1TimerDate = document.getElementById("qksSeasonA1TimerDate");
-            const qksSeasonA1StartTime = new Date("01:00:00 01 Sep 2026 GMT+8");
-            qksSeasonA1TimerDate.innerHTML = qksFormatTime(qksSeasonA1StartTime);
-            setInterval(() => {
-              qksSeasonA1Timer.innerHTML = `<big>${qksFormatDuration(
-                 new Date() - qksSeasonA1StartTime
-              ).replace(".", "</big>.")}<br>`;
-            }, 1)
-          </script>
-        </div>
-      </div>
-      <br>
+        <br>
       <div>
         <img id="qksBanner" src="assets/qks_banner.png" width="100%">
       </div>
