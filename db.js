@@ -18,12 +18,12 @@ const qksStreaks = [
   {
     qksStreakName: "",
     qksStreakHolder: "itscentralize",
-    qksStreakStart: new Date("27 May 2024 00:00:00.000 GMT+8"),
+    qksStreakStart: new Date("2024-05-27T00:00:00.000+08:00"),
     qksStreakEnd: new Date(0)
   }, {
     qksStreakName: "",
     qksStreakHolder: "cardpartypaco",
-    qksStreakStart: new Date("18 July 2025 00:00:00.000 GMT+8"),
+    qksStreakStart: new Date("2025-07-18T00:00:00.000+08:00"),
     qksStreakEnd: new Date(0)
   }
-]
+];
