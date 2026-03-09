@@ -100,7 +100,7 @@
         }
         setInterval(() => {
           for (let i = 0; i < qksLeaderboardTableTimer.length; i++) {
-            qksLeaderboardTableTimer[i].textContent = qksFormatDuration(qksStreakDuration(
+            qksLeaderboardTableTimer[i].innerHTML = qksFormatDuration(qksStreakDuration(
               qksLeaderboardTableMembers[i][1].qksMemberStreak));
           }
         }, 1);
