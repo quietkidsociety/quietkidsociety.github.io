@@ -130,6 +130,20 @@
         </div>
       </div>
       <br>
+      <big>About</big>
+      <div id="qksProfileAbout">
+        <script>
+          const qksProfileAbout = document.getElementById("qksProfileAbout");
+          if (qksMembers[qksProfileId]) {
+            if (qksMembers[qksProfileId].qksMemberAbout == "") {
+              qksProfileAbout.innerHTML = "<center>This member does not have an about section.</center>";
+            } else {
+              qksProfileAbout.innerHTML = qksMembers[qksProfileId].qksMemberAbout;
+            }
+          }
+        </script>
+      </div>
+      <br>
       <big>Links</big>
       <div id="qksProfileLinks">
         <script>
@@ -149,20 +163,6 @@
                 }</a><br>`;
               }
               qksProfileLinks.innerHTML = qksProfileLinksCode;
-            }
-          }
-        </script>
-      </div>
-      <br>
-      <big>About</big>
-      <div id="qksProfileAbout">
-        <script>
-          const qksProfileAbout = document.getElementById("qksProfileAbout");
-          if (qksMembers[qksProfileId]) {
-            if (qksMembers[qksProfileId].qksMemberAbout == "") {
-              qksProfileAbout.innerHTML = "<center>This member does not have an about section.</center>";
-            } else {
-              qksProfileAbout.innerHTML = qksMembers[qksProfileId].qksMemberAbout;
             }
           }
         </script>
@@ -269,5 +269,6 @@
   </div>
 
 </body>
+
 
 
