@@ -29,7 +29,7 @@ a {
   text-decoration: none;
   padding: 2px;
 }
-button, select {
+button, select, input {
   color: var(--qksColorForeground);
   background-color: var(--qksColorBackground);
   font-family: "Quiet Kid Society Pixel";
@@ -141,3 +141,4 @@ big {
 #qksLeaderboardTable tr:not(:first-child) td:nth-child(3) {
   border-left: none;
 }
+
