@@ -15,7 +15,7 @@ const qksMembers = {
   }, "shadowerrorblob12": {
     qksMemberName: "ShadowErrorBlob12",
     qksMemberLinks: [
-      ["Instagram", "@shadowerrorblob12", "https://www.instagram.com/shadowerroblob12/"]
+      ["Instagram", "@shadowerrorblob12", "https://www.instagram.com/shadowerrorblob12/"]
     ],
     qksMemberAbout: ""
   }
