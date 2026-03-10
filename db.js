@@ -7,7 +7,7 @@ const qksMembers = {
     ],
     qksMemberAbout: ""
   }, "cardpartypaco": {
-    qksMemberName: "CardPartyPaco",
+    qksMemberName: "Taco",
     qksMemberLinks: [
       ["Instagram", "@cardpartypaco", "https://www.instagram.com/cardpartypaco/"]
     ],
