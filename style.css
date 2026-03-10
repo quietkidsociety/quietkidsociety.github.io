@@ -26,8 +26,10 @@ body {
 }
 a {
   color: var(--qksColorForeground);
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
   padding: 2px;
+  padding-bottom: 4px;
 }
 button, select, input {
   color: var(--qksColorForeground);
