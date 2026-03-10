@@ -12,7 +12,7 @@ const qksMembers = {
       ["Instagram", "@cardpartypaco", "https://www.instagram.com/cardpartypaco/"]
     ],
     qksMemberAbout: ""
-  }, "shadowerroblob12": {
+  }, "shadowerrorblob12": {
     qksMemberName: "ShadowErrorBlob12",
     qksMemberLinks: [
       ["Instagram", "@shadowerrorblob12", "https://www.instagram.com/shadowerroblob12/"]
