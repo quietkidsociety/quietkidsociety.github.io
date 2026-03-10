@@ -12,6 +12,12 @@ const qksMembers = {
       ["Instagram", "@cardpartypaco", "https://www.instagram.com/cardpartypaco/"]
     ],
     qksMemberAbout: ""
+  }, "shadowerroblob12": {
+    qksMemberName: "ShadowErrorBlob12",
+    qksMemberLinks: [
+      ["Instagram", "@shadowerrorblob12", "https://www.instagram.com/shadowerroblob12/"]
+    ],
+    qksMemberAbout: ""
   }
 };
 const qksStreaks = [
@@ -24,6 +30,11 @@ const qksStreaks = [
     qksStreakName: "",
     qksStreakHolder: "cardpartypaco",
     qksStreakStart: new Date("2025-07-18T00:00:00.000+08:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
+    qksStreakHolder: "shadowerrorblob12",
+    qksStreakStart: new Date("2025-08-27T00:00:00.000+08:00"),
     qksStreakEnd: new Date(0)
   }
 ];
