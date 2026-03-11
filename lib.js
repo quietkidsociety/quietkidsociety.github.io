@@ -4,7 +4,7 @@ function qksStreakDuration(qksStreak) {
   } else {
     return qksStreak.qksStreakEnd - qksStreak.qksStreakStart;
   }
-}
+}
 function qksFormatDuration(qksDuration) {
   var qksDurationMagnitude = Math.abs(qksDuration);
   var qksDurationDirection = qksDuration === 0 ? 0 : qksDuration / qksDurationMagnitude;
@@ -23,22 +23,21 @@ function qksFormatDuration(qksDuration) {
   }`;
 }
 const qksFormatimeMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-  "Dec"];
+  "Dec"];
 function qksFormatTime(qksTime) {
-  const qksTimeCST = new Date(qksTime.getTime() + 28800000);
   return `${
-    String(qksTimeCST.getUTCDate()).padStart(2, "0")
+    String(qksTime.getUTCDate()).padStart(2, "0")
   } ${
-    qksFormatimeMonths[qksTimeCST.getUTCMonth()]
+    qksFormatimeMonths[qksTime.getUTCMonth()]
   } ${
-    qksTimeCST.getUTCFullYear()
+    qksTime.getUTCFullYear()
   } ${
-    String(qksTimeCST.getUTCHours()).padStart(2, "0")
+    String(qksTime.getUTCHours()).padStart(2, "0")
   }:${
-    String(qksTimeCST.getUTCMinutes()).padStart(2, "0")
+    String(qksTime.getUTCMinutes()).padStart(2, "0")
   }:${
-    String(qksTimeCST.getUTCSeconds()).padStart(2, "0")
+    String(qksTime.getUTCSeconds()).padStart(2, "0")
   }.${
-      String(qksTimeCST.getUTCMilliseconds()).padStart(3, "0")
-  } GMT+08`;
+      String(qksTime.getUTCMilliseconds()).padStart(3, "0")
+  } UTC`;
 }
