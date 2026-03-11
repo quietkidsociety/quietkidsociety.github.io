@@ -18,6 +18,12 @@ const qksMembers = {
       ["Instagram", "@shadowerrorblob12", "https://www.instagram.com/shadowerrorblob12/"]
     ],
     qksMemberAbout: ""
+  }, "tofu_kun": {
+    qksMemberName: "Tofu kun",
+    qksMemberLinks: [
+      ["Instagram", "@tofu_.kun", "https://www.instagram.com/tofu_.kun/"]
+    ],
+    qksMemberAbout: ""
   }
 };
 const qksStreaks = [
@@ -35,6 +41,11 @@ const qksStreaks = [
     qksStreakName: "",
     qksStreakHolder: "shadowerrorblob12",
     qksStreakStart: new Date("2025-08-27T00:00:00.000+08:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
+    qksStreakHolder: "tofu_kun",
+    qksStreakStart: new Date("2025-09-10T00:00:00.000+08:00"),
     qksStreakEnd: new Date(0)
   }
 ];
