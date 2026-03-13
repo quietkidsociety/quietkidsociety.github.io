@@ -22,8 +22,7 @@ function qksFormatDuration(qksDuration) {
     String(Math.floor(qksDurationMagnitude % 1000)).padStart(3, "0")
   }`;
 }
-const qksFormatimeMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-  "Dec"];
+const qksFormatimeMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 function qksFormatTime(qksTime) {
   return `${
     String(qksTime.getUTCDate()).padStart(2, "0")
@@ -41,3 +40,4 @@ function qksFormatTime(qksTime) {
       String(qksTime.getUTCMilliseconds()).padStart(3, "0")
   } UTC`;
 }
+
