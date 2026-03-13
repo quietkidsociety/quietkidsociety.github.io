@@ -58,7 +58,7 @@
         let qksLeaderboardTableMembers = [];
         function qksLeaderboardTableInit() {
           qksLeaderboardTableMembers = [];
-          let qksLeaderboardTableHTML = `<tr><td>#</td><td colspan="2">Member</td>`;
+          var qksLeaderboardTableHTML = `<tr><td>#</td><td colspan="2">Member</td>`;
           if (window.innerWidth > 1000) {
             qksLeaderboardTableHTML += "<td>Max Streak</td></tr>";
           } else {
@@ -75,8 +75,7 @@
             }][0];
           }
           qksLeaderboardTableMembers = qksLeaderboardTableMembers.sort(
-              (a, b) => qksStreakDuration(b[1].qksMemberStreak) - qksStreakDuration(a[1].qksMemberStreak))
-            .slice(0, 100);
+              (a, b) => qksStreakDuration(b[1].qksMemberStreak) - qksStreakDuration(a[1].qksMemberStreak)).slice(0, 100);
           for (let i in Object.entries(qksLeaderboardTableMembers)) {
             if (qksStreakDuration(qksLeaderboardTableMembers[i][1].qksMemberStreak) === 0) {
               continue;
@@ -100,8 +99,7 @@
         }
         setInterval(() => {
           for (let i = 0; i < qksLeaderboardTableTimer.length; i++) {
-            qksLeaderboardTableTimer[i].innerHTML = qksFormatDuration(qksStreakDuration(
-              qksLeaderboardTableMembers[i][1].qksMemberStreak));
+            qksLeaderboardTableTimer[i].innerHTML = qksFormatDuration(qksStreakDuration(qksLeaderboardTableMembers[i][1].qksMemberStreak));
           }
         }, 1);
         qksLeaderboardTableInit();
