@@ -57,8 +57,7 @@
                 qksStreakEnd: new Date(1)
             }][0]);
           }
-          qksLeaderboardRankMembers = qksLeaderboardRankMembers.sort(
-            (a, b) => b[1] - a[1]);
+          qksLeaderboardRankMembers = qksLeaderboardRankMembers.sort((a, b) => b[1] - a[1]);
           let qksProfileRankNumber = qksLeaderboardRankMembers.findIndex(i => i[0] === qksProfileId);
           qksProfileRank.innerHTML = `<center>Rank <big>${
             qksProfileRankNumber + 1
@@ -76,10 +75,8 @@
             </center>
             <br>
             <script>
-              const qksProfileHighlightStreakCurrentTimer = document.getElementById(
-                "qksProfileHighlightStreakCurrentTimer");
-              const qksProfileHighlightStreakCurrentSpan = document.getElementById(
-                "qksProfileHighlightStreakCurrentSpan");
+              const qksProfileHighlightStreakCurrentTimer = document.getElementById("qksProfileHighlightStreakCurrentTimer");
+              const qksProfileHighlightStreakCurrentSpan = document.getElementById("qksProfileHighlightStreakCurrentSpan");
               const qksProfileHighlightStreakCurrent = qksStreaks.filter(i => i.qksStreakHolder ===
                 qksProfileId && i.qksStreakEnd.getTime() === 0)[0] ?? null
               if (qksProfileHighlightStreakCurrent) {
@@ -88,9 +85,9 @@
                   qksFormatTime(qksProfileHighlightStreakCurrent.qksStreakStart)
                 } ~`;
                 setInterval(() => {
-                  qksProfileHighlightStreakCurrentTimer.innerHTML = `<big>${qksFormatDuration(
-                    new Date() - qksProfileHighlightStreakCurrentStart 
-                  )}`.replace(".", "</big>.");
+                  qksProfileHighlightStreakCurrentTimer.innerHTML = `<big>${
+                    qksFormatDuration(new Date() - qksProfileHighlightStreakCurrentStart)
+                  }`.replace(".", "</big>.");
                 }, 1)
               }
             </script>
@@ -102,13 +99,11 @@
               <div id="qksProfileHighlightStreakMaxSpan"></div>
             </center>
             <script>
-              const qksProfileHighlightStreakMaxTimer = document.getElementById(
-                "qksProfileHighlightStreakMaxTimer");
-              const qksProfileHighlightStreakMaxSpan = document.getElementById(
-                "qksProfileHighlightStreakMaxSpan");
-              const qksProfileHighlightStreakMax = [...qksStreaks.filter(i => i.qksStreakHolder ===
-                qksProfileId).sort(
-                (a, b) => qksStreakDuration(b) - qksStreakDuration(a)), ][0] ?? null
+              const qksProfileHighlightStreakMaxTimer = document.getElementById("qksProfileHighlightStreakMaxTimer");
+              const qksProfileHighlightStreakMaxSpan = document.getElementById("qksProfileHighlightStreakMaxSpan");
+              const qksProfileHighlightStreakMax = [...qksStreaks.filter(i => i.qksStreakHolder === qksProfileId).sort(
+                (a, b) => qksStreakDuration(b) - qksStreakDuration(a)
+              )][0] ?? null;
               if (qksProfileHighlightStreakMax) {
                 if (qksProfileHighlightStreakMax.qksStreakEnd < qksProfileHighlightStreakMax.qksStreakStart) {
                   qksProfileHighlightStreakMaxSpan.innerHTML = `${
@@ -269,8 +264,8 @@
     </div>
     <center> Quiet Kid Society, 2026 </center>
   </div>
-
 </body>
+
 
 
 
