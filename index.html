@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiet Kid Society</title>
+  <link rel="stylesheet" href="style.css">
+  <link id="qksFavicon" rel="shortcut icon" href="assets/qks_favicon.ico" type="image/x-icon">
+  <link id="qksFavicon" rel="shortcut icon" href="assets/qks_favicon_light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+  <script src="lib.js"></script>
+  <script src="db.js"></script>
+</head>
+<body>
+  <div id="qksBackdrop"></div>
+  <div id="qksNav">
+    <div class="qksSplit" style="width: calc(100% - 24px)">
+      <div style="flex-direction: row; text-align: left;">
+        <big>&#xeeee;</big>
+        <span id="qksTitle"> &ZeroWidthSpace; Quiet Kid Society </span>
+      </div>
+      <div style="text-align: right;"></div>
+    </div>
+  </div>
+  <div id="qksContent">
+    <br> <br>
+    <div class="qksSplit">
+      <div>
+        <big>A trial of tranquility.</big>
+        <br>
+        Quiet Kid Society has officialized and is now refining the art of school silence.
+        <br>
+      </div>
+      <div>
+        <img id="qksBanner" src="assets/qks_banner.png" width="100%">
+      </div>
+    </div>
+    <br>
+    <big>About</big>
+    <div id="qksAbout">
+      Quiet Kid Society is driven by our community of dedicated quiet kids mastering school silence,
+      actively maintaining continuous streaks.
+    </div>
+    <br>
+    <big>Links</big>
+    <div>
+    Email: <a href="mailto:quietkidsociety@gmail.com">quietkidsociety@gmail.com</a>
+    <br>
+    <big>Leaderboard</big>
+    <div id="qksLeaderboard">
+      <table id="qksLeaderboardTable"></table>
+      <script>
+        const qksLeaderboardTable = document.getElementById("qksLeaderboardTable");
+        const qksLeaderboardTableTimer = document.getElementsByClassName("qksLeaderboardTableTimer");
+        let qksLeaderboardTableMembers = [];
+        function qksLeaderboardTableInit() {
+          qksLeaderboardTableMembers = [];
+          let qksLeaderboardTableHTML = `<tr><td>#</td><td colspan="2">Member</td>`;
+          if (window.innerWidth > 1000) {
+            qksLeaderboardTableHTML += "<td>Max Streak</td></tr>";
+          } else {
+            qksLeaderboardTableHTML += "</tr>";
+          }
+          for (let [m, n] of Object.entries(qksMembers)) {
+            qksLeaderboardTableMembers.push([m, n]);
+            qksLeaderboardTableMembers[qksLeaderboardTableMembers.length - 1][1].qksMemberStreak = [...
+              qksStreaks.filter(i => i.qksStreakHolder === m).sort(
+                (a, b) => qksStreakDuration(b) - qksStreakDuration(a)), {
+                qksStreakHolder: m,
+                qksStreakStart: new Date(1),
+                qksStreakEnd: new Date(1)
+            }][0];
+          }
+          qksLeaderboardTableMembers = qksLeaderboardTableMembers.sort(
+              (a, b) => qksStreakDuration(b[1].qksMemberStreak) - qksStreakDuration(a[1].qksMemberStreak))
+            .slice(0, 100);
+          for (let i in Object.entries(qksLeaderboardTableMembers)) {
+            if (qksStreakDuration(qksLeaderboardTableMembers[i][1].qksMemberStreak) === 0) {
+              continue;
+            }
+            qksLeaderboardTableHTML += `<tr><td>${
+              parseInt(i) + 1
+            }</td><td><img src="assets/pfp/${
+              qksLeaderboardTableMembers[i][0]
+            }.png" class="qksProfilePictures" height="${
+              window.innerWidth > 1000 ? 24 : 48
+            }px"></td><td><a href="profile.html?id=${
+              qksLeaderboardTableMembers[i][0]
+            }">${
+              qksLeaderboardTableMembers[i][1].qksMemberName
+            }</a>${
+              window.innerWidth > 1000 ? "</td><td>" : "<br>"
+            }`;
+            qksLeaderboardTableHTML += `<div class="qksLeaderboardTableTimer">...</div></td></tr>`;
+            qksLeaderboardTable.innerHTML = qksLeaderboardTableHTML;
+          }
+        }
+        setInterval(() => {
+          for (let i = 0; i < qksLeaderboardTableTimer.length; i++) {
+            qksLeaderboardTableTimer[i].textContent = qksFormatDuration(qksStreakDuration(
+              qksLeaderboardTableMembers[i][1].qksMemberStreak));
+          }
+        }, 1);
+        qksLeaderboardTableInit();
+        window.addEventListener("resize", e => {
+          qksLeaderboardTableInit();
+        });
+      </script>
+    </div>
+    <br>
+    <center> Quiet Kid Society, 2026 </center>
+  </div>
+</body>
