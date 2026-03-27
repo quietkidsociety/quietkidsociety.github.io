@@ -13,8 +13,16 @@ const qksMembers = {
     qksMemberName: "Taco",
     qksMemberLinks: [],
     qksMemberAbout: ""
+  }, "tofu_1o": {
+    qksMemberName: "Tofu kun",
+    qksMemberLinks: [],
+    qksMemberAbout: ""
   }, "spaghetti_wizard62": {
     qksMemberName: "Spinzitsu Mastaa",
+    qksMemberLinks: [],
+    qksMemberAbout: ""
+  }, "enoch0060_55210": {
+    qksMemberName: "Taco",
     qksMemberLinks: [],
     qksMemberAbout: ""
   }
@@ -32,6 +40,11 @@ const qksStreaks = [
     qksStreakEnd: new Date(0)
   }, {
     qksStreakName: "",
+    qksStreakHolder: "tofu_1o",
+    qksStreakStart: new Date("2025-09-04T00:00:00.000+08:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
     qksStreakHolder: "shadowerrorblob12",
     qksStreakStart: new Date("2025-08-22T00:00:00.000+08:00"),
     qksStreakEnd: new Date(0)
@@ -39,6 +52,16 @@ const qksStreaks = [
     qksStreakName: "",
     qksStreakHolder: "spaghetti_wizard62",
     qksStreakStart: new Date("2026-03-27T00:00:00.000+11:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
+    qksStreakHolder: "spaghetti_wizard62",
+    qksStreakStart: new Date("2026-03-27T00:00:00.000+11:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
+    qksStreakHolder: "enoch0060_55210",
+    qksStreakStart: new Date("2026-03-28T00:00:00.000+11:00"),
     qksStreakEnd: new Date(0)
   }, 
 ]
