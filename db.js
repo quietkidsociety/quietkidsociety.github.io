@@ -13,7 +13,7 @@ const qksMembers = {
     qksMemberName: "Taco",
     qksMemberLinks: [],
     qksMemberAbout: ""
-  }, "tofu_1o": {
+  }, "tofusuki_58357": {
     qksMemberName: "Tofu kun",
     qksMemberLinks: [],
     qksMemberAbout: ""
@@ -45,7 +45,7 @@ const qksStreaks = [
     qksStreakEnd: new Date(0)
   }, {
     qksStreakName: "",
-    qksStreakHolder: "tofu_1o",
+    qksStreakHolder: "tofusuki_58357",
     qksStreakStart: new Date("2025-09-04T00:00:00.000+08:00"),
     qksStreakEnd: new Date(0)
   }, {
