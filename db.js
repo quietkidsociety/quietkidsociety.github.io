@@ -14,7 +14,7 @@ const qksMembers = {
     qksMemberLinks: [],
     qksMemberAbout: ""
   }, "tofusuki_58357": {
-    qksMemberName: "Tofu kun",
+    qksMemberName: "Tofu.",
     qksMemberLinks: [],
     qksMemberAbout: ""
   }, "spaghetti_wizard62": {
