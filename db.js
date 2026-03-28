@@ -25,6 +25,14 @@ const qksMembers = {
     qksMemberName: "Taco",
     qksMemberLinks: [],
     qksMemberAbout: ""
+  }, "ricky080735": {
+    qksMemberName: "Ricky",
+    qksMemberLinks: [],
+    qksMemberAbout: ""
+  }, "darfizal_83264": {
+    qksMemberName: "soirneod",
+    qksMemberLinks: [],
+    qksMemberAbout: ""
   }
 };
 const qksStreaks = [
@@ -56,6 +64,16 @@ const qksStreaks = [
   }, {
     qksStreakName: "",
     qksStreakHolder: "enoch0060_55210",
+    qksStreakStart: new Date("2026-03-28T00:00:00.000+11:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
+    qksStreakHolder: "ricky080735",
+    qksStreakStart: new Date("2026-03-28T00:00:00.000+11:00"),
+    qksStreakEnd: new Date(0)
+  }, {
+    qksStreakName: "",
+    qksStreakHolder: "darfizal_83264",
     qksStreakStart: new Date("2026-03-28T00:00:00.000+11:00"),
     qksStreakEnd: new Date(0)
   }, 
